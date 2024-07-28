@@ -1,0 +1,7 @@
+apache-airflow
+pandas
+azure-identity
+azure-storage-file-datalake
+sqlalchemy
+psycopg2-binary
+python-dotenv
