@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: airflowpostgredb #database
+    schema: marketing #schema name
+    tables:
+      - name: salesfact_source 
+        identifier: salesfact #raw table name
+        loaded_at_field: _fivetran_synced
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}
+
+      - name: dimsalesperson_source
+        identifier: dimsalesperson #raw table name
+        loaded_at_field: _fivetran_synced
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}
+
+      - name: dimproduct_source
+        identifier: dimproduct #raw table name
+        loaded_at_field: _fivetran_synced
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}
+      
+      - name: dimdate_source
+        identifier: dimdate #raw table name
+        loaded_at_field: _fivetran_synced
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}
+
+      - name: dimcustomer_source
+        identifier: dimcustomer #raw table name
+        loaded_at_field: _fivetran_synced
+        freshness:
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 24, period: hour}

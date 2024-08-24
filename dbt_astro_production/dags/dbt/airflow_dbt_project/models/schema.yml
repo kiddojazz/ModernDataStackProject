@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: factsales
+    description: Fact table containing sales transactions
+    columns:
+      - name: sales_id
+        description: Primary key for the sales transaction
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Foreign key to DimCustomer
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_id
+
+      - name: product_id
+        description: Foreign key to DimProduct
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+
+      - name: salesperson_id
+        description: Foreign key to DimSalesperson
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_salesperson')
+              field: salesperson_id
+
+      - name: date
+        description: Foreign key to DimDate
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date
+
+      - name: quantity
+        description: Quantity of products sold
+        tests:
+          - not_null
+
+      - name: total_amount
+        description: Total amount of the sale
+        tests:
+          - not_null
+
+  - name: dim_customer
+    description: Dimension table for customer information
+    columns:
+      - name: customer_id
+        description: Primary key for the customer
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_product
+    description: Dimension table for product information
+    columns:
+      - name: product_id
+        description: Primary key for the product
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_salesperson
+    description: Dimension table for salesperson information
+    columns:
+      - name: salesperson_id
+        description: Primary key for the salesperson
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    description: Dimension table for date information
+    columns:
+      - name: date
+        description: Primary key for the date
+        tests:
+          - unique
+          - not_null
